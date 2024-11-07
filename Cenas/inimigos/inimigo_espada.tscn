@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccye325mxlrlm"]
+
+[ext_resource type="Script" path="res://Scripts/inimigos/inimigo_espada.gd" id="1_ecd4g"]
+
+[node name="Inimigo_espada" type="Node2D"]
+script = ExtResource("1_ecd4g")
