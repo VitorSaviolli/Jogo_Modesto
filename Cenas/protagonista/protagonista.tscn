@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5kpscjyxopid"]
-
-[ext_resource type="Script" path="res://Scripts/protagonista/protagonista.gd" id="1_t205q"]
-
-[node name="Protagonista" type="Node2D"]
-script = ExtResource("1_t205q")
