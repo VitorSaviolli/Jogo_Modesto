@@ -126,9 +126,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_s30pb")
 }],
-"loop": true,
+"loop": false,
 "name": &"atacando",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,12 +165,13 @@ metadata/_edit_group_ = true
 script = ExtResource("1_wo7wn")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+limit_left = 0
+editor_draw_limits = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_lr5sm")
-animation = &"andando"
+animation = &"atacando"
 autoplay = "repouso"
-frame_progress = 0.853378
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-3, 31)
