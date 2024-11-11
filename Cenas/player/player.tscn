@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5kpscjyxopid"]
+[gd_scene load_steps=28 format=3 uid="uid://b5kpscjyxopid"]
 
 [ext_resource type="Script" path="res://Scripts/player/player.gd" id="1_wo7wn"]
 [ext_resource type="Texture2D" uid="uid://sps3bn1wppey" path="res://Sprites/player/Run.png" id="2_a708e"]
@@ -155,7 +155,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s5nv"]
+radius = 12.5
 height = 66.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1n5k"]
+size = Vector2(59, 20)
 
 [node name="Player" type="Node2D"]
 scale = Vector2(2, 2)
@@ -172,7 +176,15 @@ editor_draw_limits = true
 sprite_frames = SubResource("SpriteFrames_lr5sm")
 animation = &"atacando"
 autoplay = "repouso"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-3, 31)
+position = Vector2(1, 32.5)
 shape = SubResource("CapsuleShape2D_0s5nv")
+
+[node name="HitBox" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(26.5, 33.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_y1n5k")
+disabled = true

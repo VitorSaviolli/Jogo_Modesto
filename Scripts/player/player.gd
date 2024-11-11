@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var vida = 5
 var is_attacking = false
 
+
 # Função de física do personagem
 func _ready():
 	# Conectando o sinal de fim de animação ao método
@@ -27,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	# Lógica de ataque
 	if Input.is_action_just_pressed("shot") and not is_attacking:
 		is_attacking = true
+		$HitBox.set_deferred("disabled", false)
 		$AnimatedSprite2D.play("atacando")
 	
 	move_and_slide()
@@ -37,7 +39,7 @@ func _get_input():
 	if is_attacking:
 		return
 
-	var direction = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+	var direction = int(Input.is_action_pressed("direita")) - int(Input.is_action_pressed("esquerda"))
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -53,3 +55,4 @@ func _get_input():
 func _on_animation_finished():
 	if $AnimatedSprite2D.animation == "atacando":
 		is_attacking = false
+		$HitBox.disabled = true
