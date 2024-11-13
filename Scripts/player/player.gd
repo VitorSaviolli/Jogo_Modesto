@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	# Lógica de ataque
 	if Input.is_action_just_pressed("shot") and not is_attacking:
 		is_attacking = true
-		$HitBox.set_deferred("disabled", false)
+		$Area2D/HitBox.set_deferred("disabled", false)
 		$AnimatedSprite2D.play("atacando")
 	
 	move_and_slide()
@@ -50,9 +51,17 @@ func _get_input():
 	if direction != 0:
 		$AnimatedSprite2D.scale.x = direction
 		$AnimatedSprite2D.play("andando")
-
+		
+	if $AnimatedSprite2D.scale.x < 0:
+		$Area2D/HitBox.position.x = -29.23
+	else:
+		$Area2D/HitBox.position.x = 29.23
 # Função para resetar o estado de ataque quando a animação termina
 func _on_animation_finished():
 	if $AnimatedSprite2D.animation == "atacando":
 		is_attacking = false
-		$HitBox.disabled = true
+		$Area2D/HitBox.disabled = true
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	body.dano()
