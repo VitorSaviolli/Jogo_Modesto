@@ -1,18 +1,17 @@
 extends Area2D
 
-
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_body_entered(body: Node2D) -> void:
-	print("Atacar")
+	var collision_position_global = body.global_position
+	
+	if collision_position_global <= body.position:
+		if body.name == "player":
+			$AnimatedSprite2D.scale.x = -1
+			$AnimatedSprite2D.play("atacar")
 
+	elif collision_position_global >= body.position:
+		if body.name == "player":
+			$AnimatedSprite2D.scale.x = 1
+			$AnimatedSprite2D.play("atacar")
 
 func _on_body_exited(body: Node2D) -> void:
-	print("Andar")
+	$AnimatedSprite2D.play("andar")

@@ -12,35 +12,34 @@ var is_dead = false
 
 func _ready():
 	# Conectando o sinal de fim de animação ao método
-	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
+	$Area2D/AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func _process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	patrol(delta)
-	move_and_slide()
+	
+	if $Area2D/AnimatedSprite2D.animation == "andar":
+		patrol(delta)
+		move_and_slide()
 
 func patrol(delta: float) -> void:
 
 	velocity.x = move_direction * SPEED
 	distance_traveled += SPEED * delta 
-
-	#$AnimatedSprite2D.play("andar")
 	
 	if (move_direction == -1 and distance_traveled >= LEFT_DISTANCE) or (move_direction == 1 and distance_traveled >= RIGHT_DISTANCE):
 		move_direction *= -1  
 		distance_traveled = 0  
-		$AnimatedSprite2D.scale.x = move_direction * -1
+		$Area2D/AnimatedSprite2D.scale.x = move_direction * -1
 
 func dano():
 	vida -=1
 	if vida<= 0:
 		is_dead = true
-		$AnimatedSprite2D.play("morrer")
+		$Area2D/AnimatedSprite2D.play("morrer")
 		SPEED = 0
 
 func _on_animation_finished():
-	if $AnimatedSprite2D.animation == "morrer":
+	if $Area2D/AnimatedSprite2D.animation == "morrer":
 		is_dead = false
 		$'.'.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://q4pv7i3j77bw"]
+[gd_scene load_steps=11 format=3 uid="uid://q4pv7i3j77bw"]
 
 [ext_resource type="PackedScene" uid="uid://b5kpscjyxopid" path="res://Cenas/player/player.tscn" id="1_vxj0m"]
 [ext_resource type="Texture2D" uid="uid://b2jgxoprqr6hx" path="res://Sprites/Cenario/fase1/cenario 1.png" id="2_1e2u8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbx5i2vhallmr" path="res://Sprites/Cenario/fase1/ceu 2.png" id="3_m7766"]
 [ext_resource type="Texture2D" uid="uid://cjxjs84oc6g8e" path="res://Sprites/Cenario/fase1/cenario 2.png" id="4_qg1wi"]
 [ext_resource type="Texture2D" uid="uid://cjhfliutx1usl" path="res://Sprites/Cenario/objetos/textura areia.png" id="6_ul5a1"]
+[ext_resource type="Texture2D" uid="uid://bxwxwpbxhdhkf" path="res://Sprites/Cenario/objetos/ceu2.png" id="8_2p2qb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6eg0"]
 size = Vector2(4616, 74)
@@ -73,9 +74,19 @@ offset = Vector2(1728, 0)
 scale = Vector2(2, 2)
 
 [node name="texture" type="Sprite2D" parent="BG/06"]
-position = Vector2(-268, 0)
-scale = Vector2(0.465278, 1)
+position = Vector2(-269, 0)
+scale = Vector2(0.467014, 1)
 texture = ExtResource("3_arhr1")
+centered = false
+flip_h = true
+
+[node name="07" type="Parallax2D" parent="BG"]
+scale = Vector2(4, 4)
+
+[node name="texture" type="Sprite2D" parent="BG/07"]
+position = Vector2(-132, 0.749969)
+scale = Vector2(0.731771, 0.400463)
+texture = ExtResource("8_2p2qb")
 centered = false
 flip_h = true
 

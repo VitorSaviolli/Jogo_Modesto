@@ -53,9 +53,9 @@ func _get_input():
 		$AnimatedSprite2D.play("andando")
 		
 	if $AnimatedSprite2D.scale.x < 0:
-		$Area2D/HitBox.position.x = -29.23
+		$Area2D/HitBox.position.x = -34
 	else:
-		$Area2D/HitBox.position.x = 29.23
+		$Area2D/HitBox.position.x = 25
 # Função para resetar o estado de ataque quando a animação termina
 func _on_animation_finished():
 	if $AnimatedSprite2D.animation == "atacando":
@@ -64,4 +64,5 @@ func _on_animation_finished():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.dano()
+	if body.name == "inimigo_espada":
+		body.dano()
